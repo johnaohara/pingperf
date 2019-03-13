@@ -8,11 +8,14 @@
     |_|   |_||_||_| \__, | |_|  \___| |_|   |_|
                     |___/
 
+# Performance tests of Quarkus
 
 ## Motivation
 
-Docker based comparision of java MicroProfiles and Spring-Boot using simple ping REST request. Docker images are based
-on images from [hotswap-docklands](https://github.com/HotswapProjects/hotswap-docklands). 
+Docker based comparision of quarkus using simple ping REST request. Docker images are based
+on images from [hotswap-docklands](https://github.com/HotswapProjects/hotswap-docklands). Quarkus test is available
+at [Pingperf-Quarkus](https://github.com/HotswapProjects/pingperf-quarkus)
+
 ## Quick start
 
 * run `build-X.sh` to build docker image for given microprofile, spring-boot, quarkus, micronaut
