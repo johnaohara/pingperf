@@ -25,61 +25,27 @@ at [Pingperf-Quarkus](https://github.com/HotswapProjects/pingperf-quarkus)
 
 ## HW/OS
 ```
-@skybber ~ $ cat /proc/cpuinfo
-processor       : 0
-vendor_id       : AuthenticAMD
-cpu family      : 23
-model           : 1
-model name      : AMD Ryzen 5 1600 Six-Core Processor
+$ cat /proc/cpuinfo
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz
 
-@skybber ~ $ cat /proc/version 
-Linux version 5.0.0-arch1-1-ARCH (builduser@heftig-18825) (gcc version 8.2.1 20181127 (GCC)) #1 SMP PREEMPT Mon Mar 4 14:11:43 UTC 2019
+$ cat /proc/version 
+Linux version 4.19.10-200.fc28.x86_64 (mockbuild@bkernel04.phx2.fedoraproject.org) (gcc version 8.2.1 20181105 (Red Hat 8.2.1-5) (GCC)) #1 SMP Mon Dec 17 15:46:19 UTC 2018
 ```
 
 ## JMeter load tests results
 
 Tests were splitted into 3 groups varying in the heap size and the number of users (clients):
 
-- Xmx128m running single client
-- Xmx256 running 10 clients
-- Xmx256 running 50 clients
+- Xmx128m running 50 clients
 
-### Single thread (user) / -Xmx128m
+### 50 threads (users) / -Xmx128m
 
-|Microprofile|Start time|Docker mem usage|Throughput req/s|JAVA_OPTS|
-|------------|----------|----------------|----------------|---------|
-|Meecrowave 1.2.7|0.7s|181MB|5567/s|-Xmx128m|
-|Open Liberty 19.02|0,7s,real ~3s|247MB|3708/s|-Xmx128m|
-|Payara Micro 5.191|6s|320MB|3116/s|-Xmx128m --nocluster|
-|Wildfly Swarm 2018.3.3|5s|330MB|3256/s|-Xmx128m|
-|Spring-Boot 2.1.1|1.4s|235MB|5970/s|-Xmx128m|
-|Quarkus 0.11.00 |0.01s|272MB|2905/s|no|
+|Microprofile|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
+|------------|-------------|----------------|----------------|-----------------------|---------|
+|Quarkus - JVM 0.11.00|0.82|157|7396.84|6.03|-Xmx128m|
+|Quarkus - Native 0.11.00|0.002|35|5560.1|8.69|-Xmx128m -Xms25m -Xmn100m|
 
-### 50 threads (users) / -Xmx256m
-
-|Microprofile|Start time|Docker mem usage|Throughput req/s|JAVA_OPTS|
-|------------|----------|----------------|----------------|---------|
-|Meecrowave 1.2.7|0.7s|252MB|33425/s|-Xmx256m|
-|Open Liberty 19.0.02|4s|311MB|41669/s|-Xmx256m|
-|Payara Micro 5.191|6s|403MB|28942/s|-Xmx256m --nocluster|
-|Wildfly Swarm 2018.3.3|5s|404MB|39630/s|-Xmx256m|
-|Spring-Boot 2.1.1|1.4s|280MB|35013/s|-Xmx256m|
-|Quarkus 0.11.00 |0.01s|307MB|31207/s|no|
-
-### 10 threads (users) / -Xmx256m
-
-|Microprofile|Start time|Docker mem usage|Throughput req/s|JAVA_OPTS|
-|------------|----------|----------------|----------------|---------|
-|Meecrowave 1.2.4|0.7s|219MB|25121/s|-Xmx256m|
-|Open Liberty 18.04|3s|298MB|33070/s|-Xmx256m|
-|Payara Micro 5.184|6s|399MB|24768/s|-Xmx256m --nocluster|
-|Wildfly Swarm 2018.3.3|5s|390MB|23311/s|-Xmx256m|
-|Spring-Boot 2.1.1|1.4s|268MB|24908/s|-Xmx256m|
-
-## RaspberryPI
-
-Motivation of this test is to check ability to run MicroProfile application on RaspberyPi3.
-
-|Microprofile|Start time|Mem usage|Throughput req/s|JAVA_OPTS|
-|------------|----------|----------------|----------------|---------|
-|Meecrowave 1.2.0|9s||250/s||
