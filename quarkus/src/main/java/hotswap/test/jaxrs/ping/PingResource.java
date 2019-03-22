@@ -13,8 +13,9 @@ public class PingResource {
     private Statistics statistics;
 
     @Route(path = "/ping/simple", methods = GET)
-    void getSimple(RoutingContext context) {
+    void getSimple(RoutingContext context) throws java.lang.InterruptedException {
         //statistics.updateStatistic(0);
+	Thread.sleep(1); //Introduce a short pause to effect thread timings
         context.response().setStatusCode(200).end();
     }
 }
