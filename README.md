@@ -43,10 +43,19 @@ Tests were splitted into 3 groups varying in the heap size and the number of use
 
 - Xmx128m running 50 clients
 
+### 1 threads (users) / -Xmx128m
+
+|Runtime|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
+|------------|-------------|----------------|----------------|-----------------------|---------|
+|Wildfly Swarm 2018.3.3|4.535|561|13,046|0.163|-Xmx128m|
+|Quarkus - JVM 0.12.00|0.82|157|43, 960|0.034|-Xmx128m|
+|Quarkus - Native 0.12.00|0.002|35|23,252|0.114|-Xmx128m -Xms25m -Xmn100m|
+
 ### 50 threads (users) / -Xmx128m
 
-|Microprofile|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
+|Runtime|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
 |------------|-------------|----------------|----------------|-----------------------|---------|
-|Quarkus - JVM 0.11.00|0.82|157|7396.84|6.03|-Xmx128m|
-|Quarkus - Native 0.11.00|0.002|35|5560.1|8.69|-Xmx128m -Xms25m -Xmn100m|
+|Wildfly Swarm 2018.3.3|4.535|561|82,724|5.85|-Xmx128m|
+|Quarkus - JVM 0.12.00|0.82|157|73,975|0.651|-Xmx128m|
+|Quarkus - Native 0.12.00|0.002|35|26,402|1.89|-Xmx128m -Xms25m -Xmn100m|
 
