@@ -44,6 +44,7 @@ Linux version 4.19.10-200.fc28.x86_64 (mockbuild@bkernel04.phx2.fedoraproject.or
 |Runtime|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
 |------------|-------------|----------------|----------------|-----------------------|---------|
 |Wildfly Swarm 2018.3.3|4.535|561|13,046|0.163|-Xmx128m|
+|Thorntail 2.4.0.Final|5.238|511|12,966| 0.112|-Xmx128m|
 |Quarkus - JVM 0.12.00|0.82|157|43, 960|0.034|-Xmx128m|
 |Quarkus - Native 0.12.00|0.002|35|23,252|0.114|-Xmx128m -Xms25m -Xmn100m|
 
