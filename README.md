@@ -39,10 +39,6 @@ Linux version 4.19.10-200.fc28.x86_64 (mockbuild@bkernel04.phx2.fedoraproject.or
 
 ## Wrk load tests results
 
-Tests were splitted into 3 groups varying in the heap size and the number of users (clients):
-
-- Xmx128m running 50 clients
-
 ### 1 threads (users) / -Xmx128m
 
 |Runtime|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
@@ -50,12 +46,4 @@ Tests were splitted into 3 groups varying in the heap size and the number of use
 |Wildfly Swarm 2018.3.3|4.535|561|13,046|0.163|-Xmx128m|
 |Quarkus - JVM 0.12.00|0.82|157|43, 960|0.034|-Xmx128m|
 |Quarkus - Native 0.12.00|0.002|35|23,252|0.114|-Xmx128m -Xms25m -Xmn100m|
-
-### 50 threads (users) / -Xmx128m
-
-|Runtime|Start time(s)|Process RSS (MB)|Throughput req/s|Mean Response Time (ms)|JAVA_OPTS|
-|------------|-------------|----------------|----------------|-----------------------|---------|
-|Wildfly Swarm 2018.3.3|4.535|561|82,724|5.85|-Xmx128m|
-|Quarkus - JVM 0.12.00|0.82|157|73,975|0.651|-Xmx128m|
-|Quarkus - Native 0.12.00|0.002|35|26,402|1.89|-Xmx128m -Xms25m -Xmn100m|
 
